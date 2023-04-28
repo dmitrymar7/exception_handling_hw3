@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.FileSystemException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class Main {
         try {
             makeRecord();
             System.out.println("success");
-        }catch (IOException e){
+        }catch (FileSystemException e){
             System.out.println(e.getMessage());
         }
         catch (Exception e){
@@ -89,7 +90,7 @@ public class Main {
             }
             fileWriter.write(String.format("%s %s %s %s %s %s", surname, name, patronymic, format.format(birthdate), phone, sex));
         }catch (IOException e){
-            throw new IOException("Возникла ошибка при работе с файлом");
+            throw new FileSystemException("Возникла ошибка при работе с файлом");
         }
 
     }
