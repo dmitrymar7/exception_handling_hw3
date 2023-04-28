@@ -33,8 +33,11 @@ public class Main {
         try {
             makeRecord();
             System.out.println("success");
-        }catch (Exception e){
+        }catch (IOException e){
             System.out.println(e.getMessage());
+        }
+        catch (Exception e){
+            System.out.println(e.getStackTrace());
         }
 
     }
@@ -46,7 +49,7 @@ public class Main {
         try(BufferedReader bf = new BufferedReader(new InputStreamReader(System.in))) {
             text = bf.readLine();
         }catch (IOException e){
-            throw new IOException("Произошла ошибка при работе с консолью");
+            throw new Exception("Произошла ошибка при работе с консолью");
         }
 
         String[] array = text.split(" ");
